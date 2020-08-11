@@ -38,8 +38,6 @@ $ cd proffy
 
 ##### Server
 
-This project use third party dependencies that need to be installed, use that command to install all needed dependencies
-
 ```ps
 $ cd server
 $ yarn install
@@ -50,11 +48,10 @@ Database migration:
 ```
 
 $ yarn knex:migrate
+
+$ yarn start
+
 ```
-
-\$ yarn start
-
-````
 
 ##### Web
 
@@ -62,7 +59,7 @@ $ yarn knex:migrate
 $ cd web
 $ yarn install
 $ yarn start
-````
+```
 
 ##### Mobile
 
