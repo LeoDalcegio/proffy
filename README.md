@@ -1,3 +1,13 @@
+<!-- VARS -->
+
+[node-url]: https://nodejs.org/en
+[yarn-url]: https://classic.yarnpkg.com/
+[npm-url]: https://www.npmjs.com/
+[expo-url]: https://expo.io/
+[license-url]: https://github.com/leodalcegio/proffy/blob/master/license
+
+<!-- VARS -->
+
 <div align="center">
 
 <img width="500px" align="center" src=".github/proffy-initial.jfif"></img>
@@ -32,9 +42,9 @@ $ cd proffy
 
 #### Requirements 🦺
 
--   [Node.js][https://nodejs.org/en]
--   [Yarn][https://classic.yarnpkg.com/] or [npm][https://www.npmjs.com/]
--   [Expo][https://expo.io/]
+-   [Node.js][node-url]
+-   [Yarn][yarn-url] or [npm][npm-url]
+-   [Expo][expo-url]
 
 ##### Server 💾
 
@@ -120,4 +130,4 @@ Version 2.0 Features
 
 ### License 📝
 
-This project is under the MIT license. See the [LICENSE][https://github.com/leodalcegio/proffy/blob/master/license] for more information.
+This project is under the MIT license. See the [LICENSE][license-url] for more information.
