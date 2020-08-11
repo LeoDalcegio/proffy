@@ -48,6 +48,10 @@
 #page-teacher-form main .input-block label {
     color: var(--color-text-complement);
 }
+
+#page-teacher-form main fieldset .input-block {
+    margin-top: 2.4rem;
+}
 #page-teacher-form main fieldset .input-block + .textarea-block {
     margin-top: 2.4rem;
 }

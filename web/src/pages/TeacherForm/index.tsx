@@ -14,7 +14,7 @@ const TeacherForm: React.FC = () => {
     const history = useHistory();
 
     const [name, setName] = useState("");
-    const [avatar, SetAvatar] = useState("");
+    const [avatar, setAvatar] = useState("");
     const [whatsapp, setWhatsapp] = useState("");
     const [bio, setBio] = useState("");
 
@@ -90,7 +90,7 @@ const TeacherForm: React.FC = () => {
                             label="Avatar"
                             value={avatar}
                             onChange={(event) => {
-                                SetAvatar(event.target.value);
+                                setAvatar(event.target.value);
                             }}
                         />
                         <Input
