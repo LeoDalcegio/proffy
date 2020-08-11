@@ -30,16 +30,17 @@ $ git clone https://github.com/pmqueiroz/proffy.git
 $ cd proffy
 ```
 
-#### Requirements
+#### Requirements 🦺
 
 -   [Node.js][https://nodejs.org/en]
 -   [Yarn][https://classic.yarnpkg.com/] or [npm][https://www.npmjs.com/]
 -   [Expo][https://expo.io/]
 
-##### Server
+##### Server 💾
 
 ```ps
 $ cd server
+
 $ yarn install
 ```
 
@@ -49,32 +50,41 @@ Database migration:
 
 $ yarn knex:migrate
 
+```
+
+Backend start:
+
+```
+
 $ yarn start
 
 ```
 
-##### Web
+##### Web 🖥️
 
 ```ps
 $ cd web
+
 $ yarn install
+
 $ yarn start
 ```
 
-##### Mobile
+##### Mobile 📱
 
 ```ps
 $ cd mobile
 
-# Installing all fonts used
+# Installing all fonts
 $ expo install expo-font @expo-google-fonts/archivo @expo-google-fonts/poppins
 
-# Installing all dependencies required
+# Installing all dependencies
 $ yarn install
+
 $ yarn start
 ```
 
-#### Techs
+#### Techs 🤙
 
 -   Node.js
 -   React.js
