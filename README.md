@@ -96,25 +96,27 @@ $ yarn start
 Version 2.0 Features
 
 -   Web & Mobile
--   [ ] Splash screen
--   [ ] User Authentication
-    -   [ ] Login
-    -   [ ] Remember me
-    -   [ ] Sign In
-    -   [ ] Succeed Screen
-    -   [ ] User logout
-    -   [ ] Password recovery
--   [ ] Pagination of classes result
--   [ ] Show teacher schedule hours
--   [ ] Deploy
+
+    -   [ ] Splash screen
+    -   [ ] User Authentication
+        -   [ ] Login
+        -   [ ] Remember me
+        -   [ ] Sign In
+        -   [ ] Succeed Screen
+        -   [ ] User logout
+        -   [ ] Password recovery
+    -   [ ] Pagination of classes result
+    -   [ ] Show teacher schedule hours
+    -   [ ] Deploy
 
 -   Web
--   [ ] Save favorite teachers
--   [ ] Rating system
--   [ ] Teacher profile
+
+    -   [ ] Save favorite teachers
+    -   [ ] Rating system
+    -   [ ] Teacher profile
 
 -   Mobile
--   [ ] Save favorite teachers
+    -   [ ] Save favorite teachers
 
 ### License 📝
 
