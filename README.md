@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="500px" align="center" src=".github/proffy-initial.png"></img>
+<img width="500px" align="center" src=".github/proffy-initial.jfif"></img>
 
 </div>
 
