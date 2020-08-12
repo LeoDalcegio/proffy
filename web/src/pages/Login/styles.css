@@ -8,12 +8,14 @@
 
 #page-login img {
     height: 100vh;
+    object-fit: cover;
+    width: 50%;
 }
 
 #login-form-container {
     align-items: center;
     margin: 0 auto;
-    width: 30%;
+    width: 25%;
 }
 
 #login-form-container fieldset {
@@ -29,6 +31,10 @@
 #login-form-container input {
     width: 100%;
     height: 7rem;
+}
+
+#login-form-container form {
+    margin-top: 20%;
 }
 
 #login-form-container form footer {
@@ -73,9 +79,34 @@
     margin-top: 3.2rem;
 }
 
+#login-form-container .signup {
+    margin-top: 20%;
+}
+
 #login-form-container .signup a {
     color: var(--color-primary);
     font: 700 1.8rem Archivo;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+@media (max-width: 1240px) 
+{
+
+    #login-form-container{
+        width: 35%;
+    }
+}
+
+@media (max-width: 760px) 
+{
+    #page-login img
+    {
+        display: none;
+    }
+
+    #login-form-container{
+        width: 80%;
+    }
 }

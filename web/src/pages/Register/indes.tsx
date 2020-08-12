@@ -42,9 +42,10 @@ function Register() {
                     <fieldset>
                         <legend>Cadastro</legend>
                         <p>
-                            Preencha os dados abaixo
-                            {"  "}
+                            Preencha os dados abaixo                            
+                            <p>
                             para começar.
+                            </p>
                         </p>
                         <Input
                             name="name"
