@@ -1,4 +1,4 @@
-#page-login {
+#page-register {
     width: 100vw;
     height: 100vh;
 
@@ -6,57 +6,71 @@
     align-items: center;
 }
 
-#page-login img {
-    height: 100vh;
+#page-register .register-go-back {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-in-primary);
+    padding: 1.6rem 0;
+}
+#page-register .register-go-back a {
+    height: 3.2rem;
+    transition: opacity 0.2s;
 }
 
-#login-form-container {
+#page-register .register-go-back a:hover {
+    opacity: 0.6;
+}
+
+#register-form-container {
     align-items: center;
     margin: 0 auto;
     width: 30%;
 }
 
-#login-form-container fieldset {
+#register-form-container fieldset {
     border: 0;
 }
 
-#login-form-container legend {
+#register-form-container legend {
     margin-bottom: 3rem;
     font: 700 1.6rem Poppins;
     font-size: 4rem;
 }
 
-#login-form-container input {
+#register-form-container input {
     width: 100%;
     height: 7rem;
 }
 
-#login-form-container form footer {
+#register-form-container form footer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-#login-form-container form footer a {
+#register-form-container form footer a {
     margin-top: 2rem;
     text-decoration: none;
     color: var(--color-text-complement);
 }
 
-#login-form-container form footer div {
+#register-form-container form footer div {
     margin-top: 2rem;
     margin-right: 2rem;
     display: flex;
     align-items: center;
 }
 
-#login-form-container form footer div input {
+#register-form-container form footer div input {
     margin-right: 10px;
     width: 20px;
 }
 
-#login-form-container form button {
+#register-form-container form button {
     width: 100%;
     height: 5.6rem;
     background: var(--color-secundary);
@@ -73,9 +87,13 @@
     margin-top: 3.2rem;
 }
 
-#login-form-container .signup a {
+#register-form-container #signup a {
     color: var(--color-primary);
     font: 700 1.8rem Archivo;
     text-decoration: none;
     cursor: pointer;
+}
+
+.image-proffy-logo {
+    height: 100vh;
 }

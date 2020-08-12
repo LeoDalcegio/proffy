@@ -9,22 +9,15 @@ import User from "../interfaces/IUser";
 
 export default class AuthController {
     async register(request: Request, response: Response) {
-        const { 
-            email, 
-            name,
-            avatar,
-            whatsapp,
-            bio 
-        } = request.body;
+        const { email, name, surename } = request.body;
 
-        const emailExist = await db<User>('users')
-            .where(function () {
-                this.where('users.email', email)
-                    .orWhere('users.name', '>', name)
-            })
+        const emailExist = await db<User>("users")
+            .where("users.email", email)
+            .orWhere("users.name", name)
             .first();
 
-        if (emailExist) return response.status(409).send({ error: 'Email already exist' });
+        if (emailExist)
+            return response.status(409).send({ error: "Email already exist" });
 
         const hashedPassword = await hashPassword(request.body.password);
 
@@ -33,15 +26,9 @@ export default class AuthController {
         try {
             await trx("users").insert({
                 name,
+                surename,
                 email,
-                password: hashedPassword
-            });
-
-            const insertedUsersIds = await trx("users").insert({
-                name,
-                avatar,
-                whatsapp,
-                bio,
+                password: hashedPassword,
             });
 
             trx.commit();
@@ -60,23 +47,40 @@ export default class AuthController {
         const { email } = request.body;
 
         try {
-            const user = await db<User>('users')
-                .where('users.email', email)
+            if (!email) {
+                return response
+                    .status(400)
+                    .send({ error: "Email or password is wrong" });
+            }
+
+            const user = await db<User>("users")
+                .where("users.email", email)
                 .first();
 
-            if (!user) return response.status(400).send({ error: 'Email or password is wrong' });
+            if (!user)
+                return response
+                    .status(400)
+                    .send({ error: "Email or password is wrong" });
 
-            const validPassword = await comparePasswords(request.body.password, user.password);
+            const validPassword = await comparePasswords(
+                request.body.password,
+                user.password
+            );
 
-            if (!validPassword) return response.status(401).send({ error: 'Invalid password' });
+            if (!validPassword)
+                return response.status(401).send({ error: "Invalid password" });
 
-            const token = jwt.sign({ id: user.id }, String(process.env.TOKEN_SECRET), {
-                expiresIn: 604800,
-            });
+            const token = jwt.sign(
+                { id: user.id },
+                String(process.env.TOKEN_SECRET),
+                {
+                    expiresIn: 604800,
+                }
+            );
 
-            user.password = '';
+            user.password = "";
 
-            return response.header('auth-token', token).send(user);
+            return response.header("auth-token", token).send(user);
         } catch (err) {
             return response.status(401).send(err);
         }

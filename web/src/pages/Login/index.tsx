@@ -1,5 +1,6 @@
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent, useContext } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 import proffy from "../../assets/images/proffy.svg";
 
@@ -9,19 +10,20 @@ import "./styles.css";
 import Input from "../../components/Input";
 
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    function handleSignIn(e: FormEvent){
+    const { signed, signIn } = useAuth();
+
+    function handleSignIn(e: FormEvent) {
         e.preventDefault();
-        
+
+        signIn(email, password);
     }
-    
+
     return (
         <div id="page-login">
-            <img src={proffy}>
-                
-            </img>
+            <img src={proffy}></img>
             <div id="login-form-container">
                 <form onSubmit={handleSignIn}>
                     <fieldset>
@@ -46,19 +48,23 @@ function Login() {
                     </fieldset>
                     <footer>
                         <div>
-                            <input onChange={() => {}} type="checkbox" name="remember"/>
+                            <input
+                                onChange={() => {}}
+                                type="checkbox"
+                                name="remember"
+                            />
                             <label htmlFor="remember">Lembrar</label>
                         </div>
 
-                        <Link to='/forgot-password'>
+                        <Link to="/forgot-password">
                             <label>Esqueci minha senha</label>
                         </Link>
                     </footer>
                     <button type="submit">Entrar</button>
                 </form>
-                <div id="signup">
+                <div className="signup">
                     <p>Não tem conta?</p>
-                    <Link to='/signup'>
+                    <Link to="/register">
                         <label>Cadastre-se</label>
                     </Link>
                 </div>

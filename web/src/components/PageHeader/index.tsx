@@ -5,13 +5,24 @@ import logoImg from "../../assets/images/logo.svg";
 import backIcon from "../../assets/images/icons/back.svg";
 
 import "./styles.css";
+import useAuth from "../../hooks/useAuth";
 
 interface PageHeaderProps {
     title: string;
     description?: string;
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, description, children }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({
+    title,
+    description,
+    children,
+}) => {
+    const { signOut } = useAuth();
+
+    function handleSignOut() {
+        signOut();
+    }
+
     return (
         <header className="page-header">
             <div className="top-bar-container">
@@ -23,7 +34,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, description, children })
 
             <div className="header-content">
                 <strong>{title}</strong>
-                { description && <p>{ description }</p> }
+                {description && <p>{description}</p>}
                 {children}
             </div>
         </header>
