@@ -1,13 +1,13 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import api from "./../services/api";
 import AddUser from "../interfaces/AddUser";
 
 interface AuthContextData {
     signed: boolean;
     user: object;
-    signIn(email: string, password: string): Promise<void>;
+    signIn(email: string, password: string, remember: boolean): Promise<void>;
     signOut(): void;
-    signUp(newUser: AddUser): void;
+    signUp(newUser: AddUser): Promise<void>;
     loading: boolean;
 }
 
@@ -27,7 +27,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
                 api.defaults.headers["auth-token"] = storagedToken;
             }
-
+            
             setLoadig(false);
         }
 
@@ -40,24 +40,30 @@ export const AuthProvider: React.FC = ({ children }) => {
             name: newUser.name,
             password: newUser.password,
             surename: newUser.surename,
+        }).catch(() => {
+            throw Error('Erro ao realizar cadastro')
         });
     }
 
-    async function signIn(email: string, password: string) {
+    async function signIn(email: string, password: string, remember: boolean) {
         const response = await api.post("/login", {
             email,
             password,
+        }).catch(() => {
+            throw Error('E-mail ou senha inválidos')
         });
-
-        const { user } = response.data;
+        
+        const user = response.data;
         const token = response.headers["auth-token"];
 
         setUser(user);
 
         api.defaults.headers["auth-token"] = token;
 
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("auth-token", JSON.stringify(token));
+        if(remember) {
+            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("auth-token", JSON.stringify(token));
+        }        
     }
 
     async function signOut() {

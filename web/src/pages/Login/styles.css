@@ -18,6 +18,10 @@
     width: 25%;
 }
 
+#login-form-container form {
+    margin-top: 20%;
+}
+
 #login-form-container fieldset {
     border: 0;
 }
@@ -33,8 +37,8 @@
     height: 7rem;
 }
 
-#login-form-container form {
-    margin-top: 20%;
+#login-form-container .password-toggle-icon {
+    position: relative;
 }
 
 #login-form-container form footer {
@@ -108,5 +112,17 @@
 
     #login-form-container{
         width: 80%;
+    }
+}
+
+
+@media(max-height: 640px) {
+    #page-login img
+    {
+        display: none;
+    }
+
+    #login-form-container .signup, #login-form-container form {
+        margin-top: 0;
     }
 }

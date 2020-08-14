@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 import logoImg from "../../assets/images/logo.svg";
 import landingImg from "../../assets/images/landing.svg";
 
+import logout from "../../assets/images/icons/logout.svg";
 import studyIcon from "../../assets/images/icons/study.svg";
 import giveClassesIcon from "../../assets/images/icons/give-classes.svg";
 import purpleHeartIcon from "../../assets/images/icons/purple-heart.svg";
@@ -16,6 +18,8 @@ import "./styles.css";
 function Landing() {
     const [totalConnections, setTotalConnections] = useState(0);
 
+    const { signOut } = useAuth();
+
     useEffect(() => {
         api.get("connections").then((response) => {
             const { total } = response.data;
@@ -26,7 +30,11 @@ function Landing() {
 
     return (
         <div id="page-landing">
-            <div id="page-landing-content" className="container">
+            <div id="logout">
+                <input type="image" src={logout} onClick={() => signOut()} alt="logout" />
+            </div>
+
+            <div id="page-landing-content" className="container">                
                 <div className="logo-container">
                     <img src={logoImg} alt="Proffy" />
                     <h2>Sua Plataforma de estudos online</h2>

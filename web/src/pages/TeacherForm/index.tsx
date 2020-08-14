@@ -10,6 +10,7 @@ import Textarea from "../../components/Textarea";
 import Select from "../../components/Select";
 import api from "../../services/api";
 import { useHistory } from "react-router-dom";
+
 const TeacherForm: React.FC = () => {
     const history = useHistory();
 

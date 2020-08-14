@@ -5,7 +5,6 @@ import logoImg from "../../assets/images/logo.svg";
 import backIcon from "../../assets/images/icons/back.svg";
 
 import "./styles.css";
-import useAuth from "../../hooks/useAuth";
 
 interface PageHeaderProps {
     title: string;
@@ -17,11 +16,6 @@ const PageHeader: React.FC<PageHeaderProps> = ({
     description,
     children,
 }) => {
-    const { signOut } = useAuth();
-
-    function handleSignOut() {
-        signOut();
-    }
 
     return (
         <header className="page-header">

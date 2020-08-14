@@ -13,7 +13,6 @@ export default class AuthController {
 
         const emailExist = await db<User>("users")
             .where("users.email", email)
-            .orWhere("users.name", name)
             .first();
 
         if (emailExist)
@@ -80,7 +79,7 @@ export default class AuthController {
 
             user.password = "";
 
-            return response.header("auth-token", token).send(user);
+            return response.status(201).header("auth-token", token).send(user);
         } catch (err) {
             return response.status(401).send(err);
         }

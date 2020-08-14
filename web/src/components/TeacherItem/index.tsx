@@ -44,6 +44,7 @@ const TeacherItem: React.FunctionComponent<TeacherItemProps> = ({ teacher }) =>{
                 <a 
                     target="_blank"
                     onClick={createNewConnection} 
+                    rel="noopener noreferrer"
                     href={`https://wa.me/${teacher.whatsapp}?text=Olá%20Meu Chapa`}
                 >
                     <img src={whatsappIcon} alt="Whatsapp"/>

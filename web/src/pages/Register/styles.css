@@ -44,9 +44,21 @@
     height: 7rem;
 }
 
-
 #register-form-container form {
-    padding-top: 40%; 
+    padding-top: 35%; 
+}
+
+#register-form-container form  p {
+    color: var(--color-text-complement);
+    font: 500 2rem Poppins;
+}
+
+.last-line-description-paragraph {
+    margin-bottom: 50px;
+}
+
+#register-form-container .password-toggle-icon {
+    margin-top: 20px
 }
 
 #register-form-container form footer {
@@ -98,7 +110,7 @@
     cursor: pointer;
 }
 
-.image-proffy-logo {
+#page-register .image-proffy-logo {
     height: 100vh;
     object-fit: cover;
     width: 50%;
@@ -106,7 +118,6 @@
 
 @media (max-width: 1240px) 
 {
-
     #register-form-container{
         width: 35%;
     }
@@ -114,7 +125,7 @@
 
 @media (max-width: 760px) 
 {
-    .image-proffy-logo
+    #page-register .image-proffy-logo
     {
         display: none;
     }
@@ -123,8 +134,23 @@
         width: 80%;
     }
 
-    
     #register-form-container form {
         padding-top: 20%; 
+    }
+}
+
+
+@media(max-height: 800px) {
+    #page-register .image-proffy-logo
+    {
+        display: none;
+    }
+
+    #register-form-container{
+        width: 60%;
+    }
+
+    #register-form-container form {
+        padding-top: 10%; 
     }
 }
