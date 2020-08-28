@@ -105,28 +105,7 @@ $ yarn start
 
 Version 2.0 Features
 
--   Web & Mobile
-
-    -   [ ] Splash screen
-    -   [ ] User Authentication
-        -   [ ] Login
-        -   [ ] Remember me
-        -   [ ] Sign In
-        -   [ ] Succeed Screen
-        -   [ ] User logout
-        -   [ ] Password recovery
-    -   [ ] Pagination of classes result
-    -   [ ] Show teacher schedule hours
-    -   [ ] Deploy
-
--   Web
-
-    -   [ ] Save favorite teachers
-    -   [ ] Rating system
-    -   [ ] Teacher profile
-
--   Mobile
-    -   [ ] Save favorite teachers
+See the <a href="https://github.com/LeoDalcegio/proffy/issues">Issues</a>
 
 ### License 📝
 
