@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import db from "../database/connection";
-import ScheduleItem from "../interfaces/IScheduleItem";
+import ScheduleItem from "../interfaces/ScheduleItem";
 import convertHourToMinutes from "../utils/convertHourToMinutes";
 
 export default class ClassesController {

@@ -21,7 +21,25 @@ export default class UsersController {
 
     // TODO
     async update(request: Request, response: Response) {
-        return response.json("user");
+        try {
+            const { name, surename, avatar, whatsapp, bio  } = request.body
+            const { id } = request.params
+
+            await db('users')
+                .update({
+                    name,
+                    surename,
+                    whatsapp,
+                    bio
+                })
+                .where({id})
+
+            return response.status(204).send();
+        } catch (err){
+            return response.status(400).json({
+                error: `Error while updating user. Error: ${err}`,
+            });
+        }
     }
 
     async delete(request: Request, response: Response) {

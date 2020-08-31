@@ -79,7 +79,7 @@ function Register() {
                             onChange={(event) => {
                                 setEmail(event.target.value);
                             }}
-                        />
+                        />                        
                         
                         <div id="register-form-password">
                             <Input
@@ -87,7 +87,7 @@ function Register() {
                                 placeholder="Senha"
                                 value={password}
                                 required
-                                type="password"
+                                type={String(passwordInputType)}
                                 onChange={(event) => {
                                     setPassword(event.target.value);
                                 }}

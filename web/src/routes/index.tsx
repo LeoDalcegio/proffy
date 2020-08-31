@@ -9,6 +9,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register/indes";
 import SuccessRegister from "../pages/SuccessRegister";
 import ForgotPassword from "../pages/ForgotPassword";
+import SuccessSendResetPasswordEmail from "../pages/SuccessSendResetPasswordEmail";
+import UpdatePassword from "../pages/UpdatePassword";
 
 function Routes() {
 
@@ -17,7 +19,9 @@ function Routes() {
             <Route exact path="/" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/success-register" component={SuccessRegister} />
+            <Route path="/success-send-reset-password-email" component={SuccessSendResetPasswordEmail} />
             <Route path="/forgot-password" component={ForgotPassword} />
+            <Route path="/update-password/:id/:token" component={UpdatePassword}/>
             <PrivateRoute path="/landing" component={Landing} />
             <PrivateRoute path="/study" component={TeacherList} />
             <PrivateRoute path="/give-classes" component={TeacherForm} />

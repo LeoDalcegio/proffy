@@ -6,6 +6,7 @@ import backIcon from "../../assets/images/icons/back.svg";
 
 import "./styles.css";
 import Input from "../../components/Input";
+import api from "../../services/api";
 
 function ForgotPassword() {
     const [email, setEmail] = useState("");
@@ -15,7 +16,9 @@ function ForgotPassword() {
     async function handleForgotPassword(e: FormEvent) {
         e.preventDefault();
 
-        history.push('login');
+        await api.post(`/send-reset-password-email/${email}`);
+
+        history.push('/');
     }
 
     return (

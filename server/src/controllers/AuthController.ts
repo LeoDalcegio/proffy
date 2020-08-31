@@ -4,8 +4,13 @@ import db from "../database/connection";
 import hashPassword from "../utils/hashPassword";
 import comparePasswords from "../utils/comparePasswords";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs"
+import Mailer from "../modules/mailer"
 
-import User from "../interfaces/IUser";
+import User from "../interfaces/User";
+import usePasswordHashToMakeToken from "../utils/usePasswordHashToMakeToken";
+
+const mailer = new Mailer();
 
 export default class AuthController {
     async register(request: Request, response: Response) {
@@ -84,4 +89,71 @@ export default class AuthController {
             return response.status(401).send(err);
         }
     }
+
+    async sendPasswordResetEmail(request: Request, response: Response) {
+        const { email } = request.params;
+
+        console.log(email)
+
+        try {
+            const user: User = await db("users")
+                .select("*")
+                .where("email", email)
+                .first();            
+            
+            const token = await usePasswordHashToMakeToken(String(user.password), Number(user.id));
+
+            const url = mailer.getPasswordResetURL(String(user.id), token);
+
+            const emailTemplate = mailer.resetPasswordTemplate(user, String(url));
+
+            const sendEmail = () => {
+                mailer.transporter.sendMail(emailTemplate, (err, info) => {
+                    if (err) {
+                        return response.status(500).json("Error sending email")
+                    }
+
+                    console.log(`** Email sent **`, info.response)
+                })
+            }
+            sendEmail()
+        } catch (err) {
+            return response.status(400).json({
+                error: `Error while sending password e-mail ${err}`,
+            });
+        }        
+    }
+
+    async resetUserPassword(request: Request, response: Response) {
+        const { id, token } = request.params;
+        const { password } = request.body;
+
+        try {        
+            const user: User = await db("users")
+                    .select("*")
+                    .where("id", id)
+                    .first();  
+
+            const secret = user.password;
+
+            const payload = jwt.verify(token, secret);
+
+            console.log(payload);
+
+            if (Number(payload) === user.id) {                
+                const hashedPassword = await hashPassword(password);
+                
+                await db('users')
+                    .update({
+                        password: hashedPassword
+                    })
+                    .where({id})
+            }
+
+        } catch(err) {
+            return response.status(400).json({
+                error: `Error while reseting password ${err}`,
+            });
+        } 
+    }       
 }

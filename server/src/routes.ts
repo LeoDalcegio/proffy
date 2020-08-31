@@ -17,5 +17,7 @@ routes.post('/connections', connectionsController.create);
 
 routes.post('/register', authController.register);
 routes.post('/login', authController.login);
+routes.post('/send-reset-password-email/:email', authController.sendPasswordResetEmail);
+routes.post('/reset-password/:id/:token', authController.resetUserPassword);
 
 export default routes;
