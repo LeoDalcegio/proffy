@@ -9,47 +9,56 @@ import Input from "../../components/Input";
 import api from "../../services/api";
 
 function ForgotPassword() {
-    const [email, setEmail] = useState("");
-    
-    const history = useHistory();
-    
-    async function handleForgotPassword(e: FormEvent) {
-        e.preventDefault();
+  const [email, setEmail] = useState("");
 
-        await api.post(`/send-reset-password-email/${email}`);
+  const history = useHistory();
 
-        history.push('/');
+  async function handleForgotPassword(e: FormEvent) {
+    e.preventDefault();
+
+    const response = await api.post(`/send-reset-password-email/${email}`);
+
+    if (response.status === 200) {
+      history.push("/success-send-reset-password-email");
     }
+  }
 
-    return (
-        <div id="page-forgot-password">
-            <div id="forgot-password-form-container">
-                <div className="forgot-password-go-back">
-                    <Link to="/">
-                        <img src={backIcon} alt="Voltar" />
-                    </Link>
-                </div>
-                <form onSubmit={async (e) => {await handleForgotPassword(e)}}>
-                    <fieldset>
-                        <legend>Eita, esqueceu sua senha?</legend>
-                        <p>Não esquenta, vamos dar um jeito nisso.</p>
-                        <Input
-                            name="email"
-                            placeholder="Email"
-                            value={email}
-                            required
-                            onChange={(event) => {
-                                setEmail(event.target.value);
-                            }}
-                        />
-                    
-                    </fieldset>
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-            <img className="image-proffy-logo" src={proffy} alt="Logo da plataforma Proffy"></img>
+  return (
+    <div id="page-forgot-password">
+      <div id="forgot-password-form-container">
+        <div className="forgot-password-go-back">
+          <Link to="/">
+            <img src={backIcon} alt="Voltar" />
+          </Link>
         </div>
-    );
+        <form
+          onSubmit={async (e) => {
+            await handleForgotPassword(e);
+          }}
+        >
+          <fieldset>
+            <legend>Eita, esqueceu sua senha?</legend>
+            <p>Não esquenta, vamos dar um jeito nisso.</p>
+            <Input
+              name="email"
+              placeholder="Email"
+              value={email}
+              required
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
+            />
+          </fieldset>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+      <img
+        className="image-proffy-logo"
+        src={proffy}
+        alt="Logo da plataforma Proffy"
+      ></img>
+    </div>
+  );
 }
 
 export default ForgotPassword;

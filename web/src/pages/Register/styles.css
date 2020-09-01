@@ -1,156 +1,161 @@
 #page-register {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #page-register .register-go-back {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.6rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 0;
 }
 
 #page-register .register-go-back a {
-    height: 3.2rem;
-    transition: opacity 0.2s;
+  height: 3.2rem;
+  transition: opacity 0.2s;
 }
 
 #page-register .register-go-back a:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 #register-form-container {
-    align-items: center;
-    margin: 0 auto;
-    width: 26%;
-    height: 100%;
+  align-items: center;
+  margin: 0 auto;
+  width: 26%;
+  height: 100%;
 }
 
 #register-form-container fieldset {
-    border: 0;
+  border: 0;
 }
 
 #register-form-container legend {
-    margin-bottom: 3rem;
-    font: 700 1.6rem Poppins;
-    font-size: 4rem;
+  margin-bottom: 3rem;
+  font: 700 1.6rem Poppins;
+  font-size: 4rem;
 }
 
 #register-form-container input {
-    width: 100%;
-    height: 7rem;
+  width: 100%;
+  height: 7rem;
 }
 
 #register-form-container form {
-    padding-top: 35%; 
+  padding-top: 35%;
 }
 
-#register-form-container form  p {
-    color: var(--color-text-complement);
-    font: 500 2rem Poppins;
+#register-form-container form p {
+  color: var(--color-text-complement);
+  font: 500 2rem Poppins;
 }
 
 .last-line-description-paragraph {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 #register-form-container .password-toggle-icon {
-    margin-top: 20px
+  margin-top: 20px;
 }
 
 #register-form-container form footer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #register-form-container form footer a {
-    margin-top: 2rem;
-    text-decoration: none;
-    color: var(--color-text-complement);
+  margin-top: 2rem;
+  text-decoration: none;
+  color: var(--color-text-complement);
 }
 
 #register-form-container form footer div {
-    margin-top: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    align-items: center;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 #register-form-container form footer div input {
-    margin-right: 10px;
-    width: 20px;
+  margin-right: 10px;
+  width: 20px;
 }
 
 #register-form-container form button {
-    width: 100%;
-    height: 5.6rem;
-    background: var(--color-secundary);
-    color: var(--color-button-text);
-    border: 0;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    font: 700 1.6rem Archivo;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: background-color 0.2s;
-    margin-top: 3.2rem;
+  width: 100%;
+  height: 5.6rem;
+  background: var(--color-secundary);
+  color: var(--color-button-text);
+  border: 0;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  font: 700 1.6rem Archivo;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  margin-top: 3.2rem;
 }
 
 #register-form-container #signup a {
-    color: var(--color-primary);
-    font: 700 1.8rem Archivo;
-    text-decoration: none;
-    cursor: pointer;
+  color: var(--color-primary);
+  font: 700 1.8rem Archivo;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #page-register .image-proffy-logo {
-    height: 100vh;
-    object-fit: cover;
-    width: 50%;
+  height: 100vh;
+  object-fit: cover;
+  width: 50%;
 }
 
-@media (max-width: 1240px) 
-{
-    #register-form-container{
-        width: 35%;
-    }
+@media (max-width: 1366px) {
+  #register-form-container form {
+    padding-top: 0;
+  }
+
+  #page-register .register-go-back {
+    padding: 0;
+  }
 }
 
-@media (max-width: 760px) 
-{
-    #page-register .image-proffy-logo
-    {
-        display: none;
-    }
-
-    #register-form-container{
-        width: 80%;
-    }
-
-    #register-form-container form {
-        padding-top: 20%; 
-    }
+@media (max-width: 1240px) {
+  #register-form-container {
+    width: 35%;
+  }
 }
 
+@media (max-width: 760px) {
+  #page-register .image-proffy-logo {
+    display: none;
+  }
 
-@media(max-height: 800px) {
-    #page-register .image-proffy-logo
-    {
-        display: none;
-    }
+  #register-form-container {
+    width: 80%;
+  }
 
-    #register-form-container{
-        width: 60%;
-    }
+  #register-form-container form {
+    padding-top: 20%;
+  }
+}
 
-    #register-form-container form {
-        padding-top: 10%; 
-    }
+@media (max-height: 600px) {
+  #page-register .image-proffy-logo {
+    display: none;
+  }
+
+  #register-form-container {
+    width: 60%;
+  }
+
+  #register-form-container form {
+    padding-top: 10%;
+  }
 }

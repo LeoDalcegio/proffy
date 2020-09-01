@@ -21,14 +21,14 @@
 
 ### Content
 
--   [Getting Started](#Getting-Started-)
-    -   [Requirements](#Requirements)
-        -   [Server](#Server)
-        -   [Web](#Web)
-        -   [Mobile](#Mobile)
--   [Techs](#Techs)
--   [Todo](#Todo-)
--   [License](#License-)
+- [Getting Started](#Getting-Started-)
+  - [Requirements](#Requirements)
+    - [Server](#Server)
+    - [Web](#Web)
+    - [Mobile](#Mobile)
+- [Techs](#Techs)
+- [Todo](#Todo-)
+- [License](#License-)
 
 ### Getting Started 🚀
 
@@ -42,9 +42,9 @@ $ cd proffy
 
 #### Requirements 🦺
 
--   [Node.js][node-url]
--   [Yarn][yarn-url] or [npm][npm-url]
--   [Expo][expo-url]
+- [Node.js][node-url]
+- [Yarn][yarn-url] or [npm][npm-url]
+- [Expo][expo-url]
 
 ##### Server 💾
 
@@ -96,10 +96,10 @@ $ yarn start
 
 #### Techs 🤙
 
--   Node.js
--   React.js
--   React Native
--   Axios
+- Node.js
+- React.js
+- React Native
+- Axios
 
 ### Todo 📌
 

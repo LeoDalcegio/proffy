@@ -1,18 +1,21 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
-import express from 'express';
-import routes from './routes';
-import cors from 'cors';
-import helmet from 'helmet';
+import express from "express";
+import routes from "./routes";
+import cors from "cors";
+import helmet from "helmet";
 
 const PORT = process.env.PORT || 3333;
 
 const app = express();
 
-app.use(cors({
-    exposedHeaders: 'auth-token'
-}));
+app.use(
+  cors({
+    exposedHeaders: "auth-token",
+  })
+);
+
 app.use(express.json());
 app.use(helmet());
 
