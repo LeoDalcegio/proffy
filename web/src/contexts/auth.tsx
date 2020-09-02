@@ -1,40 +1,36 @@
 import React, { createContext, useState, useEffect } from "react";
 import api from "./../services/api";
-import AddUser from "../interfaces/AddUser";
+import User from "../interfaces/User";
 
 interface AuthContextData {
   signed: boolean;
-  user: object;
+  user: User | undefined;
   signIn(email: string, password: string, remember: boolean): Promise<void>;
   signOut(): void;
-  signUp(newUser: AddUser): Promise<void>;
-  loading: boolean;
+  signUp(newUser: User): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoadig] = useState(true);
+  const [user, setUser] = useState<User>();
 
   useEffect(() => {
     async function loadStorageData() {
-      const storagedUser = await localStorage.getItem("user");
-      const storagedToken = await localStorage.getItem("auth-token");
+      const storagedUser = localStorage.getItem("user");
+      const storagedToken = localStorage.getItem("auth-token");
 
       if (storagedUser && storagedToken) {
         setUser(JSON.parse(storagedUser));
 
         api.defaults.headers["auth-token"] = storagedToken;
       }
-
-      setLoadig(false);
     }
 
     loadStorageData();
   }, []);
 
-  async function signUp(newUser: AddUser) {
+  async function signUp(newUser: User) {
     await api
       .post("/register", {
         email: newUser.email,
@@ -57,15 +53,15 @@ export const AuthProvider: React.FC = ({ children }) => {
         throw Error("E-mail ou senha inválidos");
       });
 
-    const user = response.data;
+    const signedUser: User = response.data;
     const token = response.headers["auth-token"];
 
-    setUser(user);
+    setUser(signedUser);
 
     api.defaults.headers["auth-token"] = token;
 
     if (remember) {
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("user", JSON.stringify(signedUser));
       localStorage.setItem("auth-token", JSON.stringify(token));
     }
   }
@@ -73,17 +69,16 @@ export const AuthProvider: React.FC = ({ children }) => {
   async function signOut() {
     localStorage.clear();
 
-    setUser(null);
+    setUser(undefined);
   }
 
   return (
     <AuthContext.Provider
       value={{
         signed: Boolean(user),
-        user: {},
+        user,
         signIn,
         signOut,
-        loading,
         signUp,
       }}
     >

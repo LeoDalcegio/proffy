@@ -23,7 +23,7 @@ function Routes() {
         component={SuccessSendResetPasswordEmail}
       />
       <Route path="/forgot-password" component={ForgotPassword} />
-      <Route path="/update-password/:id/:token" component={UpdatePassword} />
+      <Route path="/update-password/:userId/:token" component={UpdatePassword} />
       <PrivateRoute path="/landing" component={Landing} />
       <PrivateRoute path="/study" component={TeacherList} />
       <PrivateRoute path="/give-classes" component={TeacherForm} />

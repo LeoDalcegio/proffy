@@ -7,17 +7,17 @@ const PrivateRoute: React.FC<{
   path: string;
   exact?: boolean;
 }> = ({ component: Component, ...props }) => {
-  const { signed, loading } = useAuth();
+  const { signed } = useAuth();
 
-  if (loading) {
-    return (
-      <div>
-        Loading
-        {"  "}
-        ...
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div>
+  //       Loading
+  //       {"  "}
+  //       ...
+  //     </div>
+  //   );
+  // }
 
   return (
     <Route

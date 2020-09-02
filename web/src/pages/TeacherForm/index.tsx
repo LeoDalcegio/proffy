@@ -1,15 +1,13 @@
-import React, { useState, FormEvent } from "react";
-import PageHeader from "../../components/PageHeader";
-import Input from "../../components/Input";
-
-import warningIcon from "../../assets/images/icons/warning.svg";
-
-import "./styles.css";
-
-import Textarea from "../../components/Textarea";
-import Select from "../../components/Select";
-import api from "../../services/api";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import warningIcon from "../../assets/images/icons/warning.svg";
+import Input from "../../components/Input";
+import PageHeader from "../../components/PageHeader";
+import Select from "../../components/Select";
+import Textarea from "../../components/Textarea";
+import useAuth from "../../hooks/useAuth";
+import api from "../../services/api";
+import "./styles.css";
 
 const TeacherForm: React.FC = () => {
   const history = useHistory();
@@ -18,13 +16,28 @@ const TeacherForm: React.FC = () => {
   const [avatar, setAvatar] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [bio, setBio] = useState("");
-
   const [subject, setSubject] = useState("");
   const [cost, setCost] = useState("");
 
   const [scheduleItems, setScheduleItems] = useState([
     { week_day: 0, from: "", to: "" },
   ]);
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+    api.get('/users', {
+      params: {
+        id: user?.id
+      }
+    }).then(response => {
+      setName(response.data.name + '' + response.data.surename);
+      setAvatar(response.data.avatar);
+      setWhatsapp(response.data.whatsapp);
+      setBio(response.data.bio);
+
+    })
+  }, [])
 
   function addNewScheduleItem() {
     setScheduleItems([...scheduleItems, { week_day: 0, from: "", to: "" }]);
@@ -41,7 +54,7 @@ const TeacherForm: React.FC = () => {
       }
       return scheduleItem;
     });
-    console.log(updatedScheduleItems);
+
     setScheduleItems(updatedScheduleItems);
   }
 

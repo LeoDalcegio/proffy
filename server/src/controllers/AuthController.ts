@@ -21,7 +21,7 @@ interface IPayload {
 export default class AuthController {
   async register(request: Request, response: Response) {
     const { email, name, surename } = request.body;
-
+    
     const emailExist = await db<User>("users")
       .where("users.email", email)
       .first();

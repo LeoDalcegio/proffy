@@ -1,4 +1,5 @@
-export default interface AddUser {
+export default interface User {
+  id?: number;
   name: string;
   surename: string;
   email: string;

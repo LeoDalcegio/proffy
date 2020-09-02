@@ -9,14 +9,14 @@ import "./styles.css";
 function UpdatePassword({}) {
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirmation, setNewPasswordConfirmation] = useState("");
-  const { id, token } = useParams();
+  const { userId, token } = useParams();
 
   const history = useHistory();
 
   async function handleUpdatePassword(e: FormEvent) {
     e.preventDefault();
 
-    const response = await api.post(`/reset-password/${id}/${token}`, {
+    const response = await api.post(`/reset-password/${userId}/${token}`, {
       password: newPassword,
     });
 

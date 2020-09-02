@@ -5,7 +5,7 @@ import proffy from "../../assets/images/proffy.svg";
 import Input from "../../components/Input";
 import useAuth from "../../hooks/useAuth";
 import usePasswordToggle from "../../hooks/usePasswordToggle";
-import AddUser from "../../interfaces/AddUser";
+import User from "../../interfaces/User";
 import "./styles.css";
 
 function Register() {
@@ -22,7 +22,7 @@ function Register() {
   async function handleSignUp(e: FormEvent) {
     e.preventDefault();
 
-    const user: AddUser = {
+    const user: User = {
       name,
       surename,
       email,

@@ -65,6 +65,7 @@ function Login() {
               <input
                 type="checkbox"
                 name="remember"
+                id="remember"
                 value="check"
                 onChange={(event) => {
                   setRemember(event.target.value);

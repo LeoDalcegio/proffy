@@ -7,16 +7,15 @@ export default class UsersController {
     const { id } = request.params;
 
     const user = await db("users")
+      .leftJoin("classes", "classes.user_id", "users.id")
+      .leftJoin("class_schedules", "classes.user_id", "users.id")
       .select("classes.*")
       .select("class_schedules.*")
       .select(
-        "users.name, users.surename, users.email, users.whatsapp, users.bio"
+        "users.name","users.surename",'users.avatar','users.whatsapp','users.bio', 'users.email'
       )
-      .leftJoin("classes", "classes.user_id", "user.id")
-      .leftJoin("class_schedules", "classes.user_id", "user.id")
-      .where("id", id);
-
-    return response.status(204).send(user);
+        console.log(id)
+    return response.status(200).json(user);
   }
 
   // TODO
