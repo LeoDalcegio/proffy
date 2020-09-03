@@ -6,15 +6,27 @@ export default class UsersController {
   async show(request: Request, response: Response) {
     const { id } = request.params;
 
-    const user = await db("users")
+    let user = await db("users")
       .leftJoin("classes", "classes.user_id", "users.id")
-      .leftJoin("class_schedules", "classes.user_id", "users.id")
-      .select("classes.*")
-      .select("class_schedules.*")
       .select(
-        "users.name","users.surename",'users.avatar','users.whatsapp','users.bio', 'users.email'
+        "users.name",
+        "users.surename",
+        "users.avatar",
+        "users.whatsapp",
+        "users.bio",
+        "users.email"
       )
-        console.log(id)
+      .select("classes.subject", "classes.cost")
+      .where("users.id", id)
+      .first();
+
+    const schedules = await db("class_schedules").where(
+      "class_schedules.id",
+      id
+    );
+
+    user.schedules = schedules;
+
     return response.status(200).json(user);
   }
 
@@ -22,6 +34,7 @@ export default class UsersController {
   async update(request: Request, response: Response) {
     try {
       const { name, surename, avatar, whatsapp, bio } = request.body;
+
       const { id } = request.params;
 
       await db("users")

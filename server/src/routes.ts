@@ -3,7 +3,7 @@ import ClassesController from "./controllers/ClassesController";
 import ConnectionsController from "./controllers/ConnectionsController";
 import AuthController from "./controllers/AuthController";
 import UsersController from "./controllers/UsersController";
-import verify from './middlewares/verifyToken';
+import verify from "./middlewares/verifyToken";
 
 const routes = express.Router();
 
@@ -12,7 +12,7 @@ const connectionsController = new ConnectionsController();
 const authController = new AuthController();
 const usersController = new UsersController();
 
-routes.get("/users", verify, usersController.show);
+routes.get("/users/:id", verify, usersController.show);
 
 routes.get("/classes", verify, classesController.index);
 routes.post("/classes", verify, classesController.create);
