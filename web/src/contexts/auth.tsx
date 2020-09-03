@@ -22,8 +22,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       if (storagedUser && storagedToken) {
         setUser(JSON.parse(storagedUser));
-
-        api.defaults.headers["auth-token"] = storagedToken;
+        
+        api.defaults.headers["auth-token"] = JSON.parse(storagedToken);
       }
     }
 

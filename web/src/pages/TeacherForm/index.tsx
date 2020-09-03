@@ -26,18 +26,19 @@ const TeacherForm: React.FC = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    api.get('/users', {
-      params: {
-        id: user?.id
-      }
-    }).then(response => {
-      setName(response.data.name + '' + response.data.surename);
+    api.get(`/users/${user?.id}`).then(response => {
+      setName(response.data.name + ' ' + response.data.surename);
       setAvatar(response.data.avatar);
       setWhatsapp(response.data.whatsapp);
       setBio(response.data.bio);
-
+      setCost(response.data.cost);
+      setSubject(response.data.sbject);
+      
+      setScheduleItems(response.data.schedules)
+      
     })
   }, [])
+
 
   function addNewScheduleItem() {
     setScheduleItems([...scheduleItems, { week_day: 0, from: "", to: "" }]);
@@ -52,6 +53,7 @@ const TeacherForm: React.FC = () => {
       if (index === position) {
         return { ...scheduleItem, [field]: value };
       }
+
       return scheduleItem;
     });
 
@@ -79,6 +81,7 @@ const TeacherForm: React.FC = () => {
         alert("Erro no cadastro!");
       });
   }
+
   return (
     <div id="page-teacher-form" className="container">
       <PageHeader
@@ -100,7 +103,7 @@ const TeacherForm: React.FC = () => {
             <Input
               name="avatar"
               label="Avatar"
-              value={avatar}
+              value={avatar || ''}
               onChange={(event) => {
                 setAvatar(event.target.value);
               }}
@@ -108,7 +111,7 @@ const TeacherForm: React.FC = () => {
             <Input
               name="whatsapp"
               label="WhatsApp"
-              value={whatsapp}
+              value={whatsapp || ''}
               onChange={(event) => {
                 setWhatsapp(event.target.value);
               }}
@@ -117,7 +120,7 @@ const TeacherForm: React.FC = () => {
             <Textarea
               name="bio"
               label="Biografia"
-              value={bio}
+              value={bio || ''}
               onChange={(event) => {
                 setBio(event.target.value);
               }}
@@ -167,12 +170,14 @@ const TeacherForm: React.FC = () => {
             </legend>
 
             {scheduleItems.map((scheduleItem, index) => {
+                console.log(scheduleItem)
               return (
                 <div
                   key={`${scheduleItem.week_day}${index}`}
                   className="schedule-item"
                 >
                   <Select
+                    id="select-week-day"
                     name="week_day"
                     label="Dia da semana"
                     value={scheduleItem.week_day || ""}

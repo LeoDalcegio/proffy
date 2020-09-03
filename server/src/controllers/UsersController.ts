@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import moment from 'moment';
 
 import db from "../database/connection";
 
@@ -20,12 +21,17 @@ export default class UsersController {
       .where("users.id", id)
       .first();
 
-    const schedules = await db("class_schedules").where(
-      "class_schedules.id",
-      id
-    );
+    const schedules = await db("class_schedules").where("class_schedules.id", id);
 
-    user.schedules = schedules;
+    console.log(schedules)
+
+    user.schedules = schedules.map((schedule) => {
+        return ({
+            week_day: String(schedule.week_day),
+            from: moment.utc(moment.duration(schedule.from, "minutes").asMilliseconds()).format("HH:mm"),
+            to:  moment.utc(moment.duration(schedule.to, "minutes").asMilliseconds()).format("HH:mm")
+        });
+    })
 
     return response.status(200).json(user);
   }
@@ -43,6 +49,7 @@ export default class UsersController {
           surename,
           whatsapp,
           bio,
+          avatar,
         })
         .where({ id });
 

@@ -59,6 +59,10 @@
   margin-top: 2.4rem;
 }
 
+#select-week-day {
+    margin-top: 0;
+}
+
 #page-teacher-form main footer {
   padding: 4rem 2.4rem;
   background: var(--color-box-footer);
@@ -73,6 +77,7 @@
   line-height: 2, 4rem;
   color: var(--color-text-complement);
 }
+
 #page-teacher-form main footer p img {
   margin-right: 2rem;
 }
