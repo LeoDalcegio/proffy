@@ -10,7 +10,6 @@ import "./styles.css";
 
 function Register() {
   const [name, setName] = useState("");
-  const [surename, setSurename] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordInputType, toggleIcon] = usePasswordToggle();
@@ -24,7 +23,6 @@ function Register() {
 
     const user: User = {
       name,
-      surename,
       email,
       password,
     };
@@ -58,19 +56,10 @@ function Register() {
             <Input
               name="name"
               required
-              placeholder="Nome"
+              placeholder="Nome completo"
               value={name}
               onChange={(event) => {
                 setName(event.target.value);
-              }}
-            />
-            <Input
-              name="surename"
-              placeholder="Sobrenome"
-              required
-              value={surename}
-              onChange={(event) => {
-                setSurename(event.target.value);
               }}
             />
             <Input

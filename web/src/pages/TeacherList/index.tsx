@@ -17,14 +17,14 @@ const TeacherList: React.FC = () => {
   async function searchTeachers(event: FormEvent) {
     event.preventDefault();
 
-    const response = await api.get("classes", {
+    const response = await api.get("/classes", {
       params: {
         subject,
         week_day,
         time,
       },
     });
-    setTeachers(response.data);
+    setTeachers(response.data.data);
   }
 
   return (

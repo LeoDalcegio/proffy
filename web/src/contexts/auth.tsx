@@ -22,7 +22,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       if (storagedUser && storagedToken) {
         setUser(JSON.parse(storagedUser));
-        
+
         api.defaults.headers["auth-token"] = JSON.parse(storagedToken);
       }
     }
@@ -36,7 +36,6 @@ export const AuthProvider: React.FC = ({ children }) => {
         email: newUser.email,
         name: newUser.name,
         password: newUser.password,
-        surename: newUser.surename,
       })
       .catch(() => {
         throw Error("Erro ao realizar cadastro");

@@ -20,8 +20,8 @@ interface IPayload {
 
 export default class AuthController {
   async register(request: Request, response: Response) {
-    const { email, name, surename } = request.body;
-    
+    const { email, name } = request.body;
+
     const emailExist = await db<User>("users")
       .where("users.email", email)
       .first();
@@ -36,7 +36,6 @@ export default class AuthController {
     try {
       await trx("users").insert({
         name,
-        surename,
         email,
         password: hashedPassword,
       });

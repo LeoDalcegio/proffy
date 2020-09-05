@@ -15,7 +15,7 @@ const usersController = new UsersController();
 routes.get("/users/:id", verify, usersController.show);
 
 routes.get("/classes", verify, classesController.index);
-routes.post("/classes", verify, classesController.create);
+routes.post("/classes", verify, classesController.createOrUpdate);
 
 routes.post("/connections", verify, connectionsController.create);
 routes.get("/connections", connectionsController.index);

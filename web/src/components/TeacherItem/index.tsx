@@ -38,6 +38,7 @@ const TeacherItem: React.FunctionComponent<TeacherItemProps> = ({
         </div>
       </header>
       <p>{teacher.bio}</p>
+
       <footer>
         <p>
           Preço/Hora

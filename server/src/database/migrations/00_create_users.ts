@@ -5,7 +5,6 @@ export async function up(knex: Knex) {
     table.increments("id").primary();
 
     table.string("name").notNullable();
-    table.string("surename").notNullable();
     table.string("avatar").nullable();
     table.string("whatsapp").nullable();
     table.string("bio").nullable();
